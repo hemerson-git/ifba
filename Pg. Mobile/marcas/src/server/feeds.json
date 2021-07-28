@@ -1,0 +1,195 @@
+{
+    "feeds": [
+        {
+            "_id": 1,
+            "datetime": "2019-11-01T12:00-0500",
+            "company": {
+                "name": "Chilli Beans",
+                "avatar": "chillibean.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Oculos Esportivo",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 100.0,
+                "url": "https://loja.chillibeans.com.br/",
+                "blobs": [
+                    {
+                        "type": "image",
+                        "file": "glasses0.jpeg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "glasses1.jpeg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "glasses2.jpeg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": 2,
+            "datetime": "2019-10-01T12:00-0500",
+            "company": {
+                "name": "Ray-Ban",
+                "avatar": "rayban.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Oculos Esportivo",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 110.0,
+                "url": "https://loja.chillibeans.com.br/",
+                "blobs": [
+                    {
+                        "type": "image",
+                        "file": "glasses0.jpeg"
+                    },
+                    {
+                        "id": "blob5",
+                        "type": "image",
+                        "file": "glasses1.jpeg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": 3,
+            "datetime": "2019-09-01T12:00-0500",
+            "company": {
+                "name": "H. Stern",
+                "avatar": "hstern.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Anel",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 800.0,
+                "url": "https://www.hstern.com.br/",
+                "blobs": [
+                    {
+                        "type": "image",
+                        "file": "jewelry0.jpeg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "jewelry1.jpeg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": 4,
+            "datetime": "2019-08-01T12:00-0500",
+            "company": {
+                "name": "H. Stern",
+                "avatar": "hstern.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Conjunto Brinco e Anel",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 2500.0,
+                "url": "https://www.hstern.com.br/",
+                "blobs": [
+                    {
+                        "type": "image",
+                        "file": "jewelry0.jpeg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": 5,
+            "datetime": "2019-07-01T12:00-0500",
+            "company": {
+                "name": "Boticário",
+                "avatar": "boticario.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Maquiagem",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 260.0,
+                "url": "https://www.boticario.com.br/",
+                "blobs": [
+                    {
+                        "id": "blob9",
+                        "type": "image",
+                        "file": "makeup0.jpg"
+                    },
+                    {
+                        "id": "blob10",
+                        "type": "image",
+                        "file": "makeup1.jpg"
+                    },
+                    {
+                        "id": "blob11",
+                        "type": "image",
+                        "file": "makeup2.jpg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": 6,
+            "datetime": "2019-06-01T12:00-0500",
+            "company": {
+                "name": "Arezzo",
+                "avatar": "arezzo.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Tênis Feminino",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 450.0,
+                "url": "https://www.arezzo.com.br/",
+                "blobs": [
+                    {
+                        "type": "image",
+                        "file": "shoes0.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "shoes1.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "shoes2.jpg"
+                    }
+                ]
+            }
+        },
+        {
+            "_id": 7,
+            "datetime": "2019-05-01T12:00-0500",
+            "company": {
+                "name": "Dafiti",
+                "avatar": "dafiti.jpeg"
+            },
+            "likes": 0,
+            "product": {
+                "name": "Tênis Feminino",
+                "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+                "price": 420.0,
+                "url": "https://www.dafiti.com.br/",
+                "blobs": [
+                    {
+                        "type": "image",
+                        "file": "shoes0.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "shoes1.jpg"
+                    },
+                    {
+                        "type": "image",
+                        "file": "shoes2.jpg"
+                    }
+                ]
+            }
+        }
+    ]
+}
