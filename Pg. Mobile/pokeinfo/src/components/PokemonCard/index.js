@@ -1,23 +1,30 @@
-import React from 'react';
-import { useEffect } from 'react';
-import {SvgUri} from 'react-native-svg';
-import { Card, CardImage, CardTitle } from './styles';
+import React, { useEffect } from "react";
+import { TouchableOpacity } from "react-native";
+import { useNavigation } from "@react-navigation/native";
+
+import { Card, CardImage, CardTitle } from "./styles";
 
 function PokemonCard({ pokemon }) {
-  useEffect(() => {
-    console.log(pokemon.sprites.other.dream_world.front_default)
-  }, [])
-  
-  return (
-    <Card>
-      <CardTitle>{pokemon.name}</CardTitle>
+  const navigation = useNavigation();
 
-      <CardImage
-        source={{
-          uri: pokemon.sprites.front_default
-        }}
-      />
-    </Card>
+  function handleSelectedPokemon() {
+    navigation.navigate("Pokemon", {
+      pokemon,
+    });
+  }
+
+  return (
+    <TouchableOpacity onPress={handleSelectedPokemon} activeOpacity={0.9}>
+      <Card>
+        <CardTitle>{pokemon.name}</CardTitle>
+
+        <CardImage
+          source={{
+            uri: pokemon.sprites.front_default,
+          }}
+        />
+      </Card>
+    </TouchableOpacity>
   );
 }
 
