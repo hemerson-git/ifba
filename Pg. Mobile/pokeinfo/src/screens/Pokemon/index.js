@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useRoute } from "@react-navigation/native";
 import { Text, View } from "react-native";
 
 import {
+  BtnText,
+  BtnViewMoreInfos,
   Container,
   DetailsText,
   DetailsWrapper,
@@ -14,33 +16,45 @@ import {
 
 function Pokemon() {
   const { params } = useRoute();
-  const { name, abilities, height } = params.pokemon;
+  const { name, abilities, height, sprites, base_experience } = params.pokemon;
 
-  const { ["official-artwork"]: pokemonImage } = pokemon.sprites.other;
+  const { ["official-artwork"]: pokemonImage } = sprites.other;
 
-  console.log(pokemon);
+  console.log(params.pokemon);
 
   return (
     <Container>
-      <PokemonImageContainer>
-        <PokemonImage source={{ uri: pokemonImage.front_default }} />
-      </PokemonImageContainer>
+      <View>
+        <PokemonImageContainer>
+          <PokemonImage source={{ uri: pokemonImage.front_default }} />
+        </PokemonImageContainer>
 
-      <PokemonName>{name}</PokemonName>
+        <PokemonName>{name}</PokemonName>
 
-      <DetailsWrapper>
-        <Title>Habilidades</Title>
+        <DetailsWrapper>
+          <Title>Habilidades</Title>
 
-        {abilities.map(({ ability }) => (
-          <DetailsText key={ability.name}>{ability.name}</DetailsText>
-        ))}
-      </DetailsWrapper>
+          {abilities.map(({ ability }) => (
+            <DetailsText key={ability.name}>{ability.name}</DetailsText>
+          ))}
+        </DetailsWrapper>
 
-      <DetailsWrapper>
-        <Title>Altura</Title>
+        <DetailsWrapper>
+          <Title>Altura</Title>
 
-        <DetailsText>{height}</DetailsText>
-      </DetailsWrapper>
+          <DetailsText>{height}</DetailsText>
+        </DetailsWrapper>
+
+        <DetailsWrapper>
+          <Title>Experiência Base</Title>
+
+          <DetailsText>{base_experience} (XP)</DetailsText>
+        </DetailsWrapper>
+      </View>
+
+      <BtnViewMoreInfos activeOpacity={0.9}>
+        <BtnText>{`+ informações sobre ${name}`}</BtnText>
+      </BtnViewMoreInfos>
     </Container>
   );
 }
