@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { useRoute } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { Text, View } from "react-native";
 
 import {
@@ -15,12 +15,20 @@ import {
 } from "./styles";
 
 function Pokemon() {
+  const navigation = useNavigation();
+
   const { params } = useRoute();
   const { name, abilities, height, sprites, base_experience } = params.pokemon;
 
   const { ["official-artwork"]: pokemonImage } = sprites.other;
 
   console.log(params.pokemon);
+
+  function getMoreInfos() {
+    navigation.navigate("Mais Informações", {
+      pokemon: params.pokemon,
+    });
+  }
 
   return (
     <Container>
@@ -52,7 +60,7 @@ function Pokemon() {
         </DetailsWrapper>
       </View>
 
-      <BtnViewMoreInfos activeOpacity={0.9}>
+      <BtnViewMoreInfos activeOpacity={0.9} onPress={getMoreInfos}>
         <BtnText>{`+ informações sobre ${name}`}</BtnText>
       </BtnViewMoreInfos>
     </Container>

@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { ActivityIndicator, FlatList, SafeAreaView } from "react-native";
 
-import PokemonCard from '../../components/PokemonCard';
-import pokemonStaticList from '../../server/pokemons.json';
+import PokemonCard from "../../components/PokemonCard";
+import pokemonStaticList from "../../server/pokemons.json";
 
-import { Container } from './styles';
+import { Container } from "./styles";
 
 function Feed() {
   const [feed, setFeed] = useState([]);
@@ -19,15 +19,17 @@ function Feed() {
       setFeed(FeedItems);
       getFeed();
     }
-  }, [feed])
-  
+  }, [feed]);
+
   function getFeed() {
     const initialId = ITEMS_PER_PAGE * page + 1;
     const lastId = ITEMS_PER_PAGE + initialId - 1;
 
-    const filteredItems = feed.filter(item => item.id >= initialId && item.id <= lastId);
+    const filteredItems = feed.filter(
+      (item) => item.id >= initialId && item.id <= lastId
+    );
 
-    if(filteredItems.length) {
+    if (filteredItems.length) {
       setIsLoading(true);
 
       showingItems
@@ -42,27 +44,25 @@ function Feed() {
       setIsLoading(false);
     }, 1000);
   }
-  
-  if(isLoading) {
+
+  if (isLoading) {
     <Container>
       <ActivityIndicator />
-    </Container>
+    </Container>;
   }
-  
+
   return (
     <SafeAreaView>
-      <FlatList 
+      <FlatList
         data={showingItems}
-        keyExtractor={item => String(item.id)}
+        keyExtractor={(item) => String(item.id)}
         onEndReached={getFeed}
         onEndReachedThreshold={0.1}
-        renderItem={({item}) => (
-          <PokemonCard pokemon={item}/>
-        )}
-        style={{ backgroundColor: '#000'}}
+        renderItem={({ item }) => <PokemonCard pokemon={item} />}
+        style={{ backgroundColor: "#000" }}
       />
     </SafeAreaView>
   );
-};
+}
 
 export default Feed;
