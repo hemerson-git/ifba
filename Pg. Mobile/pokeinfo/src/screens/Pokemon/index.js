@@ -22,8 +22,6 @@ function Pokemon() {
 
   const { ["official-artwork"]: pokemonImage } = sprites.other;
 
-  console.log(params.pokemon);
-
   function getMoreInfos() {
     navigation.navigate("Mais Informações", {
       pokemon: params.pokemon,
