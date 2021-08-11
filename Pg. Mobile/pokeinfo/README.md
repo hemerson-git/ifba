@@ -21,7 +21,7 @@ O Aplicativo Pokeinfo foi desenvolvido para o cumprimento de uma atividade da ma
 
 ## 🎨 Layout Preview
 
-<img src='/NLW3/.github/happy_web.gif?raw=true'/>
+<img src='https://raw.githubusercontent.com/hemerson-git/ifba/master/Pg.%20Mobile/pokeinfo/.github/pokinfo.gif'/>
 
 ## 👨‍💻 Running
 
