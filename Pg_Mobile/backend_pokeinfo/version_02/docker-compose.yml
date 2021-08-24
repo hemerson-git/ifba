@@ -1,0 +1,11 @@
+version: "3"
+
+services:
+  pokemons:
+    image: servpokemons
+    build: .
+    volumes:
+      - "./services:/services"
+    command: python3 service.py
+    expose:
+      - "5000"
