@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+  pokemons:
+    image: servpokemons
+    build: .
+    volumes:
+      - "./services/pokemons:/services"
+    command: python3 service.py
+    expose:
+      - "5000"
+    networks:
+      mynet:
+        ipv4_address: "172.19.1.1"
+
+networks:
+  mynet:
+    ipam:
+      driver: default
+      config:
+        - subnet: "172.19.0.2/16"
