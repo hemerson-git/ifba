@@ -5,7 +5,7 @@ service = Flask(__name__)
 
 # static database
 
-POKEMONs = [{
+POKEMONS = [{
     "abilities": [{
         "ability": {
              "name": "overgrow",
@@ -98866,7 +98866,7 @@ def get_info():
 @service.route('/pokemons/')
 def get_pokemons():
   pokemons = jsonify(
-    pokemons = POKEMONs
+    pokemons = POKEMONS
   )
 
   return pokemons
