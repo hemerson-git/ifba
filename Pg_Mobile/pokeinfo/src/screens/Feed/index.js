@@ -27,7 +27,7 @@ function Feed() {
   async function loadData() {
     try {
       const { data } = await api.get("/pokemons");
-      setPokemonList(data);
+      setPokemonsList(data);
     } catch (error) {
       console.log("Something went wrong");
       console.log(error);
