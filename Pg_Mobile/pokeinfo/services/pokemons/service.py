@@ -24,26 +24,41 @@ def get_connection_db():
 def generate_feed(register):
     feed = {
         "_id": register["pokemon_id"],
-        "pokemon_name": register["name"],
-        "front_default": register["image1"],
+        "pokemon_name": register["pokemon_name"],
+        "front_default": register["front_default"],
+        "front_shiny": register["front_shiny"],
+        "back_default": register["back_default"],
+        "back_shiny": register["back_shiny"],
+        "official_art": register["official_art"]
     }
 
+    return feed
 
-@service.route('/pokemons/<int:pagina>')
+
+@service.route('/pokemons/<int:page>')
 def get_pokemons(page):
     pokemons = []
 
     connection = get_connection_db()
     cursor = connection.cursor(dictionary=True)
     cursor.execute(
-        "select pokemons.id as pokemon_id, pokemons.name as pokemon_name, pokemons.image1 as image," +
-        "IFNULL(pokemons.image2, '') as image2, IFNULL(pokemon.image3, '') as image_3, pokemons.height as height" +
-        "ORDER BY DESC" +
-        "LIMIT " + str((page - 1) * PAGE_SIZE) + ", " + str(PAGE_SIZE)
+        "select _id as pokemon_id, name as pokemon_name, front_default, " +
+        "IFNULL(back_default, '') as back_default, IFNULL(front_shiny, '') as front_shiny, " +
+        "IFNULL(back_shiny, '') as back_shiny, IFNULL(official_art, '') as official_art, height " +
+        "FROM details " +
+        "ORDER BY pokemon_id ASC " +
+        "LIMIT " + str((page - 1) * PAGE_SIZE) + ", " + str(PAGE_SIZE) + "; "
     )
 
     result = cursor.fetchall()
     for register in result:
-        pokemons.append(register)
+        pokemons.append(generate_feed(register))
 
-    return pokemons
+    return jsonify(pokemons)
+
+
+if __name__ == "__main__":
+    service.run(
+        host="0.0.0.0",
+        debug=DEBUG
+    )
