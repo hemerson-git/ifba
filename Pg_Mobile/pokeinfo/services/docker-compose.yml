@@ -1,39 +1,37 @@
-version: 3
-
+version: '3'
 services:
   feeds:
-    imagem: pokemons
+    image: pokemons
     build: ./dockerfiles/services
-    hostname: pokemons
+    hostname: feeds
     expose:
-      - "5000"
+      - '5000'
     volumes:
-      - "./pokemons:/service"
+      - './pokemons:/service'
     command: python3 service.py
     networks:
       pokemonsnet:
         ipv4_address: 172.29.1.1
-
   database:
     image: mysql
     hostname: database
     expose:
-      - "3306"
+      - '3306'
     environment:
       MYSQL_ROOT_PASSWORD: admin
     networks:
-      pokemons:
+      pokemonsnet:
         ipv4_address: 172.29.1.4
-
   files:
     image: files
     build: ./dockerfiles/nginx/
     volumes:
-      - "./assets/images:/usr/share/nginx/html"
+      - './assets/images:/usr/share/nginx/html'
+    expose:
+      - '80'
     networks:
-      pokemons:
+      pokemonsnet:
         ipv4_address: 172.29.1.5
-
 networks:
   pokemonsnet:
     ipam:
