@@ -21,6 +21,14 @@ def get_connection_db():
     return connection
 
 
+def generate_feed(register):
+    feed = {
+        "_id": register["pokemon_id"],
+        "pokemon_name": register["name"],
+        "front_default": register["image1"],
+    }
+
+
 @service.route('/pokemons/<int:pagina>')
 def get_pokemons(page):
     pokemons = []
@@ -33,5 +41,9 @@ def get_pokemons(page):
         "ORDER BY DESC" +
         "LIMIT " + str((page - 1) * PAGE_SIZE) + ", " + str(PAGE_SIZE)
     )
+
+    result = cursor.fetchall()
+    for register in result:
+        pokemons.append(register)
 
     return pokemons
