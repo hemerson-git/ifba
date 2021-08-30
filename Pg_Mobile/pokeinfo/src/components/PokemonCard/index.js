@@ -4,6 +4,8 @@ import { useNavigation } from "@react-navigation/native";
 
 import { Card, CardImage, CardTitle } from "./styles";
 
+import { getImages } from "../../service/api";
+
 function PokemonCard({ pokemon }) {
   const navigation = useNavigation();
 
@@ -20,7 +22,7 @@ function PokemonCard({ pokemon }) {
 
         <CardImage
           source={{
-            uri: pokemon.sprites.front_default,
+            uri: getImages(pokemon.name, "front_default"),
           }}
         />
       </Card>

@@ -1,12 +1,8 @@
 import React, { useState, useEffect } from "react";
-import {
-  ActivityIndicator,
-  FlatList,
-  SafeAreaView,
-  ScrollView,
-  Text,
-} from "react-native";
+import { ActivityIndicator, FlatList, ScrollView } from "react-native";
 import { useRoute } from "@react-navigation/native";
+
+import { getImages } from "../../service/api";
 
 import {
   PokemonImage,
@@ -26,14 +22,18 @@ function MoreInfos() {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getImages();
+    loadImages();
   }, [items]);
 
-  function getImages() {
-    const values = Object.values(sprites);
-    const parsedUrls = values.filter((image) => typeof image === "string");
+  function loadImages() {
+    const parsedItems = [
+      getImages(pokemon, "front_default"),
+      getImages(pokemon, "front_shiny"),
+      getImages(pokemon, "back_default"),
+      getImages(pokemon, "back_shiny"),
+    ];
 
-    const images = parsedUrls.map((item, index) => {
+    const images = parsedItems.map((item, index) => {
       return {
         id: index,
         url: item,
@@ -79,7 +79,7 @@ function MoreInfos() {
             <Value>{weight}</Value>
           </PokemonsMetaDetail>
 
-          {stats.map(({ stat, base_stat }, index) => (
+          {/* {stats.map(({ stat, base_stat }, index) => (
             <PokemonsMetaDetail key={index}>
               <Title>{stat.name}: </Title>
               <Value>{base_stat}</Value>
@@ -91,7 +91,7 @@ function MoreInfos() {
             {moves.map(({ move }, index) => (
               <Value key={index}>{move.name}, </Value>
             ))}
-          </PokemonsMetaDetail>
+          </PokemonsMetaDetail> */}
         </ScrollView>
       </PokemonsMeta>
     </Container>

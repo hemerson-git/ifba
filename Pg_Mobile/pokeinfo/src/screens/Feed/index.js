@@ -4,7 +4,7 @@ import { ActivityIndicator, FlatList, SafeAreaView } from "react-native";
 import PokemonCard from "../../components/PokemonCard";
 import { Container } from "./styles";
 
-import { getFeeds } from "../../service/api";
+import { getFeeds, getImages } from "../../service/api";
 
 function Feed() {
   const [feed, setFeed] = useState([]);
@@ -23,6 +23,7 @@ function Feed() {
   }, [feed]);
 
   async function loadData() {
+    console.log(getImages("ivysaur", "front_default"));
     const data = getFeed();
     setPokemonsList(data);
   }
@@ -60,7 +61,7 @@ function Feed() {
     <SafeAreaView>
       <FlatList
         data={showingItems}
-        keyExtractor={(item) => String(item.id)}
+        keyExtractor={(item) => String(item._id)}
         onEndReached={getFeed}
         onEndReachedThreshold={0.1}
         renderItem={({ item }) => <PokemonCard pokemon={item} />}

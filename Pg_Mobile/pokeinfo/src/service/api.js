@@ -1,6 +1,7 @@
 import axios from "axios";
 
 const FEEDS_ADDRESS = "http://172.29.1.1:5000";
+const IMAGES_ADDRESS = "http://172.29.1.5:80/";
 
 const api = axios.create({
   baseURL: FEEDS_ADDRESS,
@@ -25,6 +26,12 @@ export const getFeeds = async (page) => {
   }
 
   return promise;
+};
+
+export const getImages = (pokemon, image) => {
+  const imageURL = `${IMAGES_ADDRESS}/${pokemon}/sprites/${image}.png`;
+
+  return imageURL;
 };
 
 export default api;
