@@ -28,6 +28,27 @@ export const getFeeds = async (page) => {
   return promise;
 };
 
+export const getPokemon = async (pokemon_id) => {
+  let promise = null;
+  console.log(`${FEEDS_ADDRESS}/pokemons/${page}`);
+
+  try {
+    response = await fetch(`${FEEDS_ADDRESS}/pokemon/${pokemon_id}`, {
+      method: "GET",
+    });
+
+    if (response.ok) {
+      promise = Promise.resolve(response.json());
+    } else {
+      promise = Promise.reject(response);
+    }
+  } catch (error) {
+    promise = Promise.reject(error);
+  }
+
+  return promise;
+};
+
 export const getImages = (pokemon, image) => {
   const imageURL = `${IMAGES_ADDRESS}/${pokemon}/sprites/${image}.png`;
 

@@ -16,7 +16,7 @@ import {
 
 function MoreInfos() {
   const route = useRoute();
-  const { name, sprites, height, moves, stats, base_experience, weight } =
+  const { name, height, moves, stats, base_experience, weight } =
     route.params.pokemon;
 
   const [items, setItems] = useState([]);

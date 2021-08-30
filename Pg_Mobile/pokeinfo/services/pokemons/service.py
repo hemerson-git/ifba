@@ -57,6 +57,26 @@ def get_pokemons(page):
     return jsonify(pokemons)
 
 
+@service.route('/pokemon/<int:id>')
+def get_pokemon(id):
+    pokemon = {}
+
+    connection = get_connection_db()
+    cursor = connection.cursor(dictionary=True)
+    cursor.execute(
+        "select _id as pokemon_id, name as pokemon_name, front_default, " +
+        "IFNULL(back_default, '') as back_default, IFNULL(front_shiny, '') as front_shiny, " +
+        "IFNULL(back_shiny, '') as back_shiny, IFNULL(official_art, '') as official_art, height " +
+        "FROM details WHERE _id = " + str(id)
+    )
+
+    register = cursor.fetchone()
+    if register:
+        pokemon = generate_feed(register)
+
+    return jsonify(pokemon)
+
+
 if __name__ == "__main__":
     service.run(
         host="0.0.0.0",
