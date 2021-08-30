@@ -23,7 +23,6 @@ function Feed() {
   }, [feed]);
 
   async function loadData() {
-    console.log(getImages("ivysaur", "front_default"));
     const data = getFeed();
     setPokemonsList(data);
   }
@@ -39,7 +38,7 @@ function Feed() {
               ? setShowingItems([...showingItems, ...moreItems])
               : setShowingItems(moreItems);
 
-            setPage(page);
+            setPage(page + 1);
           }
         }
 
