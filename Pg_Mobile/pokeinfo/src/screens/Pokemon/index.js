@@ -18,9 +18,7 @@ function Pokemon() {
   const navigation = useNavigation();
 
   const { params } = useRoute();
-  const { name, abilities, height, sprites, base_experience } = params.pokemon;
-
-  const { ["official-artwork"]: pokemonImage } = sprites.other;
+  const { name, height, base_experience, official_art } = params.pokemon;
 
   function getMoreInfos() {
     navigation.navigate("Mais Informações", {
@@ -32,7 +30,7 @@ function Pokemon() {
     <Container>
       <View>
         <PokemonImageContainer>
-          <PokemonImage source={{ uri: pokemonImage.front_default }} />
+          <PokemonImage source={{ uri: official_art }} />
         </PokemonImageContainer>
 
         <PokemonName>{name}</PokemonName>
